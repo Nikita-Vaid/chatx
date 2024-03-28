@@ -13,6 +13,26 @@ const StyledInput = styled(Input)(({ theme }) => ({
     },
 }));
 
+const ChatInput =() =>{
+    return(
+        <StyledInput
+                    fullWidth
+                    placeholder="write a message..."
+                    variant="filled"
+                    disableUnderline
+                    startAdornment={<InputAdornment position="start">
+                        <IconButton>
+                            <LinkSimple />
+                        </IconButton>
+                    </InputAdornment>}
+                    endAdornment={<InputAdornment position="end">
+                        <IconButton>
+                            <Smiley />
+                        </IconButton>
+                    </InputAdornment>}
+                />
+    )
+}
 const Footer = () => {
     const theme = useTheme();
     return (
@@ -29,22 +49,13 @@ const Footer = () => {
                 alignItems={"center"}
                 spacing={3}
             >
-                <StyledInput
-                    fullWidth
-                    placeholder="write a message..."
-                    variant="filled"
-                    disableUnderline
-                    startAdornment={<InputAdornment position="start">
-                        <IconButton>
-                            <LinkSimple />
-                        </IconButton>
-                    </InputAdornment>}
-                    endAdornment={<InputAdornment position="end">
-                        <IconButton>
-                            <Smiley />
-                        </IconButton>
-                    </InputAdornment>}
-                />
+                <Stack>
+                     {/* ChatInput */}
+                     <ChatInput/>
+                
+                </Stack>
+               
+               
                 <Box sx={{
                     height: 48,
                     width: 48,
