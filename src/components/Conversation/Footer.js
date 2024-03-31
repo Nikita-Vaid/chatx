@@ -75,5 +75,5 @@ const Footer = () => {
 
     )
 }
-
+// day 5
 export default Footer;
