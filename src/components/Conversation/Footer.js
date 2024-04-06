@@ -3,6 +3,9 @@ import { Box, IconButton, InputAdornment, Stack, Input } from "@mui/material";
 import { LinkSimple, PaperPlaneTilt, Smiley } from "phosphor-react";
 import { useTheme, styled } from "@mui/material/styles";
 
+import data from '@emoji-mart/data'
+import Picker from '@emoji-mart/react'
+
 const StyledInput = styled(Input)(({ theme }) => ({
     borderRadius: '20px',
     backgroundColor: theme.palette.mode === 'dark' ? '#333' : '#f0f2f5',
@@ -49,9 +52,13 @@ const Footer = () => {
                 alignItems={"center"}
                 spacing={3}
             >
-                <Stack>
+                <Stack sx={{width: "100%"}}>
                      {/* ChatInput */}
                      <ChatInput/>
+                     <Box sx={{zIndex: 10, position: "fixed", bottom: 81, right: 100}}>
+                     <Picker theme={theme.palette.mode} data={data} onEmojiSelect={console.log} />
+                     </Box>
+                     
                 
                 </Stack>
                
