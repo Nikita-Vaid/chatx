@@ -1,19 +1,32 @@
 import React from "react";
 import { useTheme } from "@mui/material/styles";
-import { Avatar, Box, Stack, IconButton, Typography } from "@mui/material";
-import { MagnifyingGlass, VideoCamera, Phone } from "phosphor-react";
+import { 
+    Avatar, 
+    Box, 
+    Stack, 
+    IconButton, 
+    Typography,
+      } from "@mui/material";
+import {  MagnifyingGlass, VideoCamera, Phone } from "phosphor-react";
 import { faker } from "@faker-js/faker";
 import StyledBadge from "../StyledBadge";
+import { dispatch, useDispatch } from "../../redux/store";
+import { ToggleSidebar } from "../../redux/slices/app";
+// import { useDispatch } from "react-redux";
 
 const Header = () => {
     const theme = useTheme();
+    const dispatch = useDispatch();
     return (
         <Box
             p={2}
             sx={{
                 height: 100,
                 width: "100%",
-                backgroundColor: theme.palette.mode === "light" ? "#F8FAFF" : theme.palette.background.paper,
+                backgroundColor: 
+                theme.palette.mode === "light" 
+                ? "#F8FAFF" 
+                : theme.palette.background.paper,
                 boxShadow: "0px 0px 2px rgba(0, 0, 0, 0.25)",
             }}>
 
@@ -25,7 +38,10 @@ const Header = () => {
                     width: "100%",
                     height: "100%"
                 }}>
-                <Stack
+                <Stack onClick={() =>{
+                    //
+                    dispatch(ToggleSidebar());
+                }}
                     direction={"row"}
                     spacing={2}>
                     <Box>
@@ -43,7 +59,7 @@ const Header = () => {
                         </StyledBadge>
                     </Box>
                     <Stack spacing={0.2}>
-                        <Typography> {faker.name.fullName()}</Typography>
+                        <Typography variant="subtitle2"> {faker.name.fullName()}</Typography>
                         <Typography variant="caption"> Online </Typography>
                     </Stack>
                 </Stack>

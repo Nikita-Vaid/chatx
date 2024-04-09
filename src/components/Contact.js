@@ -1,8 +1,11 @@
 import React  from "react";
+import {Box} from '@mui/material';
 
 const Contact = () =>{
     return(
-        <div> Contact</div>
+        <Box sx={{width: 320 }}>
+
+        </Box>
     )
 }
 
