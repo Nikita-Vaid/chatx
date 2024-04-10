@@ -38,6 +38,9 @@ export function ToggleSidebar() {
 
 export function UpdateSidebarType(type) {
     return async () => {
-        dispatch(slice.actions.updateSideBarType({ type }));
+        dispatch(
+            slice.actions.updateSideBarType({
+                type
+            }));
     };
 }  

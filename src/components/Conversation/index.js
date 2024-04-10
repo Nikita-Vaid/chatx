@@ -32,7 +32,7 @@ const Conversation = () => {
                         backgroundColor: theme.palette.mode === "light" ? '#bbb' : '#444',
                     },
                 }}>
-                <Message/>        
+                 <Message menu={true}/>        
             </Box>
             
             {/* Chat Footer*/}
