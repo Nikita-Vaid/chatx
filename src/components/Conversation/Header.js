@@ -10,7 +10,7 @@ import {
 import {  MagnifyingGlass, VideoCamera, Phone } from "phosphor-react";
 import { faker } from "@faker-js/faker";
 import StyledBadge from "../StyledBadge";
-import { dispatch, useDispatch } from "../../redux/store";
+import { useDispatch } from "../../redux/store";
 import { ToggleSidebar } from "../../redux/slices/app";
 // import { useDispatch } from "react-redux";
 
