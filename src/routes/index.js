@@ -5,10 +5,12 @@ import { Navigate, useRoutes } from "react-router-dom";
 import DashboardLayout from "../layouts/dashboard";
 
 import MainLayout from "../layouts/main";
+// import Register from "../pages/auth/Register";
 
 // config
 import { DEFAULT_PATH } from "../config";
 import LoadingScreen from "../components/LoadingScreen";
+
 
 const Loadable = (Component) => (props) => {
   return (
@@ -26,6 +28,8 @@ export default function Router() {
       children: [
 
         {element: <LoginPage/>, path: "login" },
+        {element: <RegisterPage/>, path: "register" },
+
 
       ] 
     },
@@ -49,6 +53,7 @@ const GeneralApp = Loadable(
   lazy(() => import("../pages/dashboard/GeneralApp")),
 );
 const LoginPage = Loadable(lazy(() => import ("../pages/auth/Login")));
+const RegisterPage = Loadable(lazy(() => import ("../pages/auth/Register")));
 const Settings = Loadable(
   lazy(() => import("../pages/dashboard/Settings")),
 );

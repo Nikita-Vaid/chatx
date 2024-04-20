@@ -1,4 +1,6 @@
 import { Divider, IconButton, Stack } from '@mui/material';
+import { LoadingButton } from "@mui/lab";
+
 import { GoogleLogo, GithubLogo, TwitterLogo } from 'phosphor-react'; // Ensure correct import paths
 import React from 'react';
 
@@ -14,7 +16,9 @@ const AuthSocial = () => {
                         borderTopStyle: 'dashed',
                     },
                 }}
-            ></Divider>
+            >
+                OR
+            </Divider>
             <Stack direction="row" justifyContent="center" spacing={2}>
                 <IconButton>
                     <GoogleLogo color="#DF3E30" />

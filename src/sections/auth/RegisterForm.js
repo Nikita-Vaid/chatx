@@ -1,24 +1,22 @@
 import React, { useState } from "react";
-import * as Yup from "yup";
-import { Link as RouterLink } from "react-router-dom";
-// form
+import * as Yup from 'yup';
 import { useForm } from "react-hook-form";
+// components
+import FormProvider, { RHFTextField } from "../../components/hook-form";
+import { Eye, EyeSlash } from "phosphor-react";
+
 import { yupResolver } from "@hookform/resolvers/yup";
 // @mui
-import { Link, Stack, Alert, IconButton, InputAdornment } from "@mui/material";
-import { LoadingButton } from "@mui/lab";
-import FormProvider from "../../components/hook-form/FormProvider";
-import { Eye, EyeSlash } from "phosphor-react";
-// components
-import { RHFTextField } from "../../components/hook-form";
+import { Link, Stack, Button, Alert, IconButton, InputAdornment } from "@mui/material";
+ 
 
 
-const LoginForm = () => {
+const RegisterForm = () => {
     const [showPassword, setShowPassword] = useState(false);
-   
 
-
-    const LoginSchema = Yup.object().shape({
+    const RegisterSchema = Yup.object().shape({
+        firstName: Yup.string().required("First Name is required"),
+        lastName: Yup.string().required("Last Name is required"),
         email: Yup.string()
             .required("Email is required")
             .email("Email must be a valid email address"),
@@ -26,12 +24,14 @@ const LoginForm = () => {
     });
 
     const defaultValues = {
+        firstName: "",
+        lastName: "",
         email: "demo@tawk.com",
         password: "demo1234",
     };
 
     const methods = useForm({
-        resolver: yupResolver(LoginSchema),
+        resolver: yupResolver(RegisterSchema),
         defaultValues,
     });
 
@@ -59,15 +59,16 @@ const LoginForm = () => {
 
 
     return (
-        <FormProvider
-            methods={methods}
+        <FormProvider methods={methods}
             onSubmit={handleSubmit(onSubmit)}>
-
-            <Stack spacing={3}>
+            <Stack spacing={3} mb={4}>
                 {!!errors.afterSubmit && (
                     <Alert severity="error">{errors.afterSubmit.message}</Alert>
                 )}
-
+                <Stack direction={{ xs: "column", sm: "row" }} spacing={2}>
+                    <RHFTextField name="firstName" label="First name" />
+                    <RHFTextField name="lastName" label="Last name" />
+                </Stack>
                 <RHFTextField name="email" label="Email address" />
                 <RHFTextField
                     name="password"
@@ -77,9 +78,8 @@ const LoginForm = () => {
                         endAdornment: (
                             <InputAdornment position="end">
                                 <IconButton
-                                    onClick={() => {
-                                        setShowPassword(!showPassword);
-                                    }}
+                                    onClick={() => setShowPassword(!showPassword)}
+                                    edge="end"
                                 >
                                     {showPassword ? <Eye /> : <EyeSlash />}
                                 </IconButton>
@@ -89,36 +89,29 @@ const LoginForm = () => {
                 />
 
             </Stack>
-            <Stack alignItems="flex-end" sx={{ my: 2 }}>
-                <Link component={RouterLink} to="/auth/reset-password" variant="body2" color="inherit" underline="always">
-                    Forgot password?
-                </Link>
-            </Stack>
 
-            <LoadingButton
-        fullWidth
-        color="inherit"
-        size="large"
-        type="submit"
-        variant="contained"
-        
-        sx={{
-          bgcolor: "text.primary",
-          color: (theme) =>
-            theme.palette.mode === "light" ? "common.white" : "grey.800",
-          "&:hover": {
-            bgcolor: "text.primary",
-            color: (theme) =>
-              theme.palette.mode === "light" ? "common.white" : "grey.800",
-          },
-        }}
-      >
-        Login
-      </LoadingButton>
-
+            <Button
+                fullWidth
+                color="inherit"
+                size="large"
+                type="submit"
+                variant="contained"
+               
+                sx={{
+                    bgcolor: "text.primary",
+                    color: (theme) =>
+                        theme.palette.mode === "light" ? "common.white" : "grey.800",
+                    "&:hover": {
+                        bgcolor: "text.primary",
+                        color: (theme) =>
+                            theme.palette.mode === "light" ? "common.white" : "grey.800",
+                    },
+                }}
+            >
+                Create Account
+            </Button>
 
         </FormProvider>
-    );
-};
-
-export default LoginForm;
+    )
+}
+export default RegisterForm;
