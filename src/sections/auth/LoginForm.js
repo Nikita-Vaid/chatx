@@ -5,7 +5,12 @@ import { Link as RouterLink } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 // @mui
-import { Link, Stack, Alert, IconButton, InputAdornment } from "@mui/material";
+import { 
+    Link, 
+    Stack, 
+    Alert, 
+    IconButton, 
+    InputAdornment } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
 import FormProvider from "../../components/hook-form/FormProvider";
 import { Eye, EyeSlash } from "phosphor-react";
@@ -39,7 +44,7 @@ const LoginForm = () => {
         reset,
         setError,
         handleSubmit,
-        formState: { errors, isSubmitting, isSubmitSuccessful },
+        formState: { errors },
     } = methods;
 
     const onSubmit = async (data) => {
@@ -121,4 +126,4 @@ const LoginForm = () => {
     );
 };
 
-export default LoginForm;
+export default LoginForm; 
