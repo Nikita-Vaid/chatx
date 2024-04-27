@@ -37,7 +37,7 @@ const GeneralApp = () => {
             return <Contact />;
 
           case "STARRED":
-            return <StarredMessages/>
+            return <StarredMessages/> 
           case "SHARED":
             return <SharedMessages />;
           default:
