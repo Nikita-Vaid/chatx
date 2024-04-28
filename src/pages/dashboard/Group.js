@@ -1,14 +1,23 @@
 import { Box, Stack, Typography, Link, IconButton, Divider } from "@mui/material";
-import React from "react";
+import React , { useState } from "react";
 import { Search, SearchIconWrapper, StyledInputBase } from "../../components/Search";
 import { MagnifyingGlass, Plus } from "phosphor-react";
 import { useTheme } from "@mui/material/styles";
 import { SimpleBarStyle } from "../../components/Scrollbar";
 import { ChatList } from "../../data";
 import ChatElement from "../../components/ChatElement";
+import CreateGroup from "../../sections/main/CreateGroup";
 
 const Group = () => {
-    
+    const [openDialog, setOpenDialog] = useState(false);
+
+    const handleCloseDialog = () => {
+        setOpenDialog(false);
+    }
+    // const handleOpenDialog = () => {
+    //     setOpenDialog(true);
+    // }
+
     const theme = useTheme();
     return (
         <>
@@ -54,7 +63,9 @@ const Group = () => {
                             <Typography variant="subtitle2" sx={{}} component={Link}>
                                 Create New Group
                             </Typography>
-                            <IconButton >
+                            <IconButton  onClick={() =>{
+                                setOpenDialog(true);
+                            }}>
                                 <Plus style={{ color: theme.palette.primary.main }} />
                             </IconButton>
                         </Stack>
@@ -79,7 +90,7 @@ const Group = () => {
                                     {ChatList.filter((el) => !el.pinned).map((el, idx) => {
                                         return <ChatElement {...el} />;
                                     })}
-                                    </Stack>
+                                </Stack>
                             </SimpleBarStyle>
 
                         </Stack>
@@ -87,12 +98,10 @@ const Group = () => {
                     </Stack>
 
                 </Box>
-                 {/* Right */}
+                {/* Right */}
 
             </Stack>
-
-
-
+            {openDialog && <CreateGroup open={openDialog} handleClose={handleCloseDialog} />}
         </>
     )
 }
