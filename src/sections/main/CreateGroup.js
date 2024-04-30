@@ -1,6 +1,7 @@
 import React from "react";
 import * as Yup from "yup";
 import {
+    Button,
     Dialog,
     DialogContent,
     DialogTitle,
@@ -11,6 +12,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { FormProvider, useForm } from "react-hook-form";
 import { RHFTextField } from "../../components/hook-form";
 import RHFAutocomplete from "../../components/hook-form/RHFAutocomplete";
+
+const MEMBERS = ["Name 1", "Name 2", "Name 3"];
 
 // Transition component
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -34,7 +37,7 @@ const CreateGroupForm = ({ handleClose }) => {
         defaultValues,
     });
 
-    const { handleSubmit } = methods;
+    // const { handleSubmit } = methods;
 
     const onSubmit = async (data) => {
         try {
@@ -52,9 +55,27 @@ const CreateGroupForm = ({ handleClose }) => {
             <Stack spacing={3}>
                 <RHFTextField name="title" label="Title" />
                 {/* Add more form fields here if needed */}
-                <RHFAutocomplete/>
+                <RHFAutocomplete
+                    name="members"
+                    label="Members"
+                    multiple
+                    freeSolo
+                    options={MEMBERS.map((option) => option)}
+                    ChipProps={{ size: "medium" }} />
+
+                <Stack
+                    spacing={2}
+                    direction={"row"}
+                    alignItems="center"
+                    justifyContent={"end"}
+                >
+                    <Button onClick={handleClose}>Cancel</Button>
+                    <Button type="submit" variant="contained">
+                        Create
+                    </Button>
+                </Stack>
+
             </Stack>
-            <button onClick={handleSubmit(onSubmit)}>Submit</button>
         </FormProvider>
     );
 };
@@ -73,7 +94,7 @@ const CreateGroup = ({ open, handleClose }) => {
             sx={{ p: 4 }}
         >
             {/* Title */}
-            <DialogTitle>{"Create New Group"}</DialogTitle>
+            <DialogTitle sx={{mb: 2}}>{"Create New Group"}</DialogTitle>
             <DialogContent sx={{ mt: 4 }}>
                 {/* Create Group Form */}
                 <CreateGroupForm handleClose={handleClose} />
