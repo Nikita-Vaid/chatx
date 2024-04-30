@@ -9,16 +9,60 @@ import { Nav_Buttons, Profile_Menu } from "../../data";
 import AntSwitch from "../../components/AntSwitch";
 import { faker } from "@faker-js/faker";
 import Logo from "../../assets/Images/logo.ico";
-// import { Stack } from "phosphor-react";
+import { useNavigation } from "react-router-dom";
 
+const getPath = (index) => {
+    switch (index) {
+        case 0:
+            return "/app";
+
+        case 1:
+            return "/group";
+
+        case 2:
+            return "/call";
+
+        case 3:
+            return "/settings";
+
+        default:
+            break;
+    }
+}
+const getMenuPath = (index) => {
+    switch (index) {
+        case 0:
+            return "/profile";
+
+        case 1:
+            return "/settings";
+
+        case 2:
+            // TODO => Update token & set isAuth = false 
+            return "/auth/login";
+
+
+        default:
+            break;
+    }
+
+}
 const Sidebar = () => {
     const theme = useTheme();
+    const navigate = useTheme
     const [selected, setSelected] = useState(0);
     const { onToggleMode } = useSettings();
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
+
+
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
+        alert(event.currentTarget);
+        // navigate();
+
+
+
     };
     const handleClose = () => {
         setAnchorEl(null);
@@ -63,6 +107,7 @@ const Sidebar = () => {
                                 : <IconButton
                                     onClick={() => {
                                         setSelected(el.index);
+                                        navigate(getPath(el.index));
                                     }}
                                     sx={{ width: "max-content", color: theme.palette.mode === "light" ? "#000" : theme.palette.text.primary }} key={el.index}>
                                     {el.icon}
@@ -78,6 +123,7 @@ const Sidebar = () => {
                                 </IconButton>
                             </Box>
                             : <IconButton onClick={() => {
+                                navigate(getPath(3));
                                 setSelected(3);
                             }}
                                 sx={{ width: "max-content", color: theme.palette.mode === "light" ? "#000" : theme.palette.text.primary }}
@@ -93,12 +139,14 @@ const Sidebar = () => {
                     <AntSwitch onChange={() => {
                         onToggleMode();
                     }} defaultChecked />
-                    <Avatar  id="basic-button"
-                    aria-controls={open ? 'basic-menu' : undefined}
-                    aria-haspopup="true"
-                    aria-expanded={open ? 'true' : undefined}
-                    onClick={handleClick}
-                     src={faker.image.avatar()} />
+                    <Avatar
+                        id="basic-button"
+                        aria-controls={open ? 'basic-menu' : undefined}
+                        aria-haspopup="true"
+                        aria-expanded={open ? 'true' : undefined}
+                        onClick={handleClick} // Attach the onClick event handler here
+                        src={faker.image.avatar()}
+                    />
                     <Menu
                         id="basic-menu"
                         anchorEl={anchorEl}
@@ -108,7 +156,7 @@ const Sidebar = () => {
                             'aria-labelledby': 'basic-button',
                         }}
                         anchorOrigin={{
-                           vertical: "bottom",
+                            vertical: "bottom",
                             horizontal: "right"
                         }}
                         transformOrigin={{
@@ -117,11 +165,17 @@ const Sidebar = () => {
                         }}
                     >
                         <Stack spacing={1} px={1}>
-                            {Profile_Menu.map((el) => (
-                                <MenuItem onClick={() => { /* Perform some action here */ }}> <Stack sx={{ width: 100 }} direction={"row"} alignItems={"center"} justifyContent={"space-between"}>
-                                    <span>{el.title} </span>
-                                    {el.icon}
-                                </Stack>{" "}
+                            {Profile_Menu.map((el, idx) => (
+                                <MenuItem onClick={() => {
+                                    handleClick();
+                                    navigate(getMenuPath(idx));
+                                }}>
+
+                                    <Stack 
+                                    sx={{ width: 100 }} direction={"row"} alignItems={"center"} justifyContent={"space-between"}>
+                                        <span>{el.title} </span>
+                                        {el.icon}
+                                    </Stack>{" "}
                                 </MenuItem>
                             ))}
                         </Stack>
@@ -134,4 +188,4 @@ const Sidebar = () => {
     )
 }
 
-export default Sidebar
+export default Sidebar;
