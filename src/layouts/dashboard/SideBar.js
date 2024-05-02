@@ -30,6 +30,24 @@ const getPath = (index) => {
     }
 }
 
+const getMenuPath = (index) => {
+    switch (index) {
+        case 0:
+            return "/profile";
+
+        case 1:
+            return "/settings";
+
+        case 2:
+            // TODO 
+            return "/auth/login";
+
+
+        default:
+            break;
+    }
+}
+
 const Sidebar = () => {
     const theme = useTheme();
     const navigate = useNavigate();
@@ -43,7 +61,8 @@ const Sidebar = () => {
 
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
-        // navigate();
+    
+
 
     };
     const handleClose = () => {
@@ -180,10 +199,14 @@ const Sidebar = () => {
                             {Profile_Menu.map((el, idx) => (
                                 <MenuItem onClick={() => {
                                     handleClick();
-
+                                    
                                 }}>
 
                                     <Stack
+                                    onClick={() =>{
+                                    navigate(getMenuPath(idx));
+
+                                    }}
 
                                         sx={{ width: 100 }} direction={"row"} alignItems={"center"} justifyContent={"space-between"}>
                                         <span>{el.title} </span>
@@ -202,3 +225,6 @@ const Sidebar = () => {
 }
 
 export default Sidebar;
+
+
+//vuvuu

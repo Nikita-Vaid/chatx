@@ -7,8 +7,8 @@ const isAuthenticated = true;
 
 const MainLayout = () => {
 
-  if(!isAuthenticated){
-    return <Navigate  to="/auth/login"/>;
+  if(isAuthenticated){
+    return <Navigate  to="/app"/>;
   }
 
   return (
