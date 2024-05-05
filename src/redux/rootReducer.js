@@ -13,10 +13,13 @@ const rootPersistConfig = {
  
   const rootReducer = combineReducers({
     app: appReducer,
-    // auth: authReducer,
+    // auth: authReducer   , 
     // conversation: conversationReducer,
     // audioCall: audioCallReducer,
     // videoCall: videoCallReducer,
   });
   
   export { rootPersistConfig, rootReducer };  
+
+
+  // just for fun 
