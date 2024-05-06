@@ -22,4 +22,5 @@ const rootPersistConfig = {
   export { rootPersistConfig, rootReducer };  
 
 
-  // just for fun 
+  // just for fun vjvhvuhv
+  // xyrtdtdtr
