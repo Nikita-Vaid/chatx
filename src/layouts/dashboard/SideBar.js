@@ -10,6 +10,8 @@ import AntSwitch from "../../components/AntSwitch";
 import { faker } from "@faker-js/faker";
 import Logo from "../../assets/Images/logo.ico";
 import { useNavigate } from "react-router-dom";
+import { LoginUser, LogoutUser } from "../../redux/slices/auth";
+import { useDispatch } from "react-redux";
 
 const getPath = (index) => {
     switch (index) {
@@ -49,6 +51,7 @@ const getMenuPath = (index) => {
 }
 
 const Sidebar = () => {
+    const dispatch = useDispatch();
     const theme = useTheme();
     const navigate = useNavigate();
     const [selected, setSelected] = useState(0);
@@ -61,7 +64,7 @@ const Sidebar = () => {
 
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
-    
+
 
 
     };
@@ -200,13 +203,22 @@ const Sidebar = () => {
                                 <MenuItem onClick={() => {
                                     handleClick();
                                     
+                                    dispatch(LogoutUser());
+
                                 }}>
 
                                     <Stack
-                                    onClick={() =>{
-                                    navigate(getMenuPath(idx));
-
-                                    }}
+                                        onClick={() => {
+                                            if (idx === 2) {
+                                                // if idx is 2 then dispatch logout
+                                    
+                                                dispatch(LogoutUser());
+                                            }
+                                            else{
+                                                navigate(getMenuPath(idx));
+                                            }
+                                        
+                                        }}
 
                                         sx={{ width: 100 }} direction={"row"} alignItems={"center"} justifyContent={"space-between"}>
                                         <span>{el.title} </span>

@@ -1,28 +1,21 @@
 import { combineReducers } from 'redux';
 import storage from 'redux-persist/lib/storage';
-import appReducer from "./slices/app";
+import appReducer from './slices/app';
+import authReducer from './slices/auth';
 
-// slices
+// slices 
+
 const rootPersistConfig = {
-    key: 'root',
+    key: "root",
     storage,
-    keyPrefix: 'redux-',
-    //   whitelist: [],
-    //   blacklist: [],
-  };
- 
-  const rootReducer = combineReducers({
+    keyPrefix: "redux-",
+    // whitelist: [],
+    // blacklist: [],
+};
+
+const rootReducer = combineReducers({
     app: appReducer,
-    // auth: authReducer   , 
-    // conversation: conversationReducer,
-    // audioCall: audioCallReducer,
-    // videoCall: videoCallReducer,
-    // xbKBlblKABXLKdvqwiudvqiwu
-    //uvyyycy
-  });
-  
-  export { rootPersistConfig, rootReducer };  
+    auth: authReducer,
+});
 
-
-  // just for fun vjvhvuhv
-  // xyrtdtdtrhvjvjv
+export { rootPersistConfig, rootReducer };

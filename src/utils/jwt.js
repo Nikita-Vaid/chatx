@@ -1,8 +1,8 @@
 import jwtDecode from 'jwt-decode';
 // routes
-import { PATH_AUTH } from '../routes/paths';
+import {PATH_AUTH } from "../routes/paths";
 //
-import axios from './axios';
+import axios from 'axios';
 
 // ----------------------------------------------------------------------
 
@@ -48,7 +48,7 @@ const setSession = (accessToken) => {
     handleTokenExpired(exp);
   } else {
     localStorage.removeItem('accessToken');
-    delete axios.defaults.headers.common.Authorization;
+    delete axios.delete.headers.common.Authorization;
   }
 };
 

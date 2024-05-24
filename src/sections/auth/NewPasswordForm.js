@@ -16,26 +16,31 @@ import FormProvider from "../../components/hook-form/FormProvider";
 import { Eye, EyeSlash } from "phosphor-react";
 // components
 import { RHFTextField } from "../../components/hook-form";
+import { useDispatch } from "react-redux";
+import { NewPassword } from "../../redux/slices/auth";
+import { useSearchParams } from "react-router-dom";
 
 
 const NewPasswordForm = () => {
+    const [queryParameter] = useSearchParams();
+    const dispatch = useDispatch();
     const [showPassword, setShowPassword] = useState(false);
 
 
 
     const NewPasswordSchema = Yup.object().shape({
 
-        newPassword: Yup.string()
+        password: Yup.string()
             .min(6, 'Password must be at least 6 characters')
             .required('Password is required'),
-        confirmPassword: Yup.string()
+        passwordConfirm: Yup.string()
             .required('Confirm password is required')
             .oneOf([Yup.ref('password'), null], 'Passwords must match'),
     });
 
     const defaultValues = {
-        newPassword: '',
-        confirmPassword: '',
+        password: '',
+        passwordConfirm: '',
     };
 
     const methods = useForm({
@@ -54,7 +59,7 @@ const NewPasswordForm = () => {
         try {
             //   console.log(data);
             // submit data to backend
-            //   dispatch(LoginUser(data));
+               dispatch(NewPassword({...data, token:  queryParameter.get("token")}));
         } catch (error) {
             console.error(error);
             reset();
@@ -79,7 +84,7 @@ const NewPasswordForm = () => {
 
                 <RHFTextField name="email" label="Email address" />
                 <RHFTextField
-                    name="newPassword"
+                    name="password"
                     label="New Password"
                     type={showPassword ? "text" : "password"}
                     InputProps={{
@@ -98,7 +103,7 @@ const NewPasswordForm = () => {
                 />
 
                 <RHFTextField
-                    name="confirmPassword"
+                    name="passwordConfirm"
                     label="Confirm New Password"
                     type={showPassword ? 'text' : 'password'}
                     InputProps={{

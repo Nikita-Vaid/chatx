@@ -5,22 +5,29 @@ import { Link as RouterLink } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 // @mui
-import { 
-    Link, 
-    Stack, 
-    Alert, 
-    IconButton, 
-    InputAdornment } from "@mui/material";
+import {
+    Link,
+    Stack,
+    Alert,
+    IconButton,
+    InputAdornment
+} from "@mui/material";
 import { LoadingButton } from "@mui/lab";
 import FormProvider from "../../components/hook-form/FormProvider";
 import { Eye, EyeSlash } from "phosphor-react";
 // components
 import { RHFTextField } from "../../components/hook-form";
+import { LoginUser } from "../../redux/slices/auth";
+import { useDispatch } from "react-redux";
+
 
 
 const LoginForm = () => {
+
+    const dispatch = useDispatch();
+
     const [showPassword, setShowPassword] = useState(false);
-   
+
 
 
     const LoginSchema = Yup.object().shape({
@@ -49,9 +56,9 @@ const LoginForm = () => {
 
     const onSubmit = async (data) => {
         try {
-            //   console.log(data);
-            // submit data to backend
+
             //   dispatch(LoginUser(data));
+            dispatch(LoginUser(data));
         } catch (error) {
             console.error(error);
             reset();
@@ -101,25 +108,25 @@ const LoginForm = () => {
             </Stack>
 
             <LoadingButton
-        fullWidth
-        color="inherit"
-        size="large"
-        type="submit"
-        variant="contained"
-        
-        sx={{
-          bgcolor: "text.primary",
-          color: (theme) =>
-            theme.palette.mode === "light" ? "common.white" : "grey.800",
-          "&:hover": {
-            bgcolor: "text.primary",
-            color: (theme) =>
-              theme.palette.mode === "light" ? "common.white" : "grey.800",
-          },
-        }}
-      >
-        Login
-      </LoadingButton>
+                fullWidth
+                color="inherit"
+                size="large"
+                type="submit"
+                variant="contained"
+
+                sx={{
+                    bgcolor: "text.primary",
+                    color: (theme) =>
+                        theme.palette.mode === "light" ? "common.white" : "grey.800",
+                    "&:hover": {
+                        bgcolor: "text.primary",
+                        color: (theme) =>
+                            theme.palette.mode === "light" ? "common.white" : "grey.800",
+                    },
+                }}
+            >
+                Login
+            </LoadingButton>
 
 
         </FormProvider>
