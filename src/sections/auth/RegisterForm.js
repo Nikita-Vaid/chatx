@@ -7,11 +7,15 @@ import { Eye, EyeSlash } from "phosphor-react";
 
 import { yupResolver } from "@hookform/resolvers/yup";
 // @mui
-import { Link, Stack, Button, Alert, IconButton, InputAdornment } from "@mui/material";
+import { Stack, Button, Alert, IconButton, InputAdornment } from "@mui/material";
+import { RegisterUser } from "../../redux/slices/auth";
+// import { dispatch } from "../../redux/store";
+import { useDispatch } from "react-redux";
  
 
 
 const RegisterForm = () => {
+    const dispatch = useDispatch();
     const [showPassword, setShowPassword] = useState(false);
 
     const RegisterSchema = Yup.object().shape({
@@ -39,14 +43,14 @@ const RegisterForm = () => {
         reset,
         setError,
         handleSubmit,
-        formState: { errors, isSubmitting, isSubmitSuccessful },
+        formState: { errors },
     } = methods;
 
     const onSubmit = async (data) => {
         try {
             //   console.log(data);
             // submit data to backend
-            //   dispatch(LoginUser(data));
+              dispatch(RegisterUser(data));
         } catch (error) {
             console.error(error);
             reset();
