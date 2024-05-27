@@ -37,19 +37,6 @@ const CreateGroupForm = ({ handleClose }) => {
         defaultValues,
     });
 
-    // const { handleSubmit } = methods;
-
-    const onSubmit = async (data) => {
-        try {
-            //  API Call
-            console.log("DATA", data);
-            // Close dialog after form submission
-            handleClose();
-        } catch (error) {
-            console.log("error", error);
-        }
-    };
-
     return (
         <FormProvider {...methods}>
             <Stack spacing={3}>
@@ -105,6 +92,3 @@ const CreateGroup = ({ open, handleClose }) => {
 };
 
 export default CreateGroup;
-
-
-// bjwdb

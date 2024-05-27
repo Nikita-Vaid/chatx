@@ -9,7 +9,7 @@ import {
     Button
 } from "@mui/material";
 import { RHFTextField } from "../../components/hook-form";
-import { ForgotPassword, LoginUser } from "../../redux/slices/auth";
+import { ForgotPassword } from "../../redux/slices/auth";
 import { useDispatch } from "react-redux";
 
 const ResetPasswordForm = () => {

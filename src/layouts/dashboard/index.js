@@ -20,8 +20,8 @@ const DashboardLayout = () => {
         }
       }
 
-      window.reload();    
-
+      // Remove the incorrect call to window.reload()
+      // window.reload(); // This line is incorrect and should be removed
 
       // Moved `socket` connection outside of useEffect as it should only be connected once
       if (!socket) {

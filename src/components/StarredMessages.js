@@ -10,11 +10,11 @@ import Message from "./Conversation/Message";
 const StarredMessages = () => {
     const theme = useTheme();
     const dispatch = useDispatch();
-    const [ setValue] = React.useState(0);
+    // const [ setValue] = React.useState(0);
 
-    const handleChange = (event, newValue) => {
-        setValue(newValue);
-    };
+    // const handleChange = (event, newValue) => {
+    //     setValue(newValue);
+    // };
 
     return (
         <Box sx={{ width: 320, height: "100vh" }}>

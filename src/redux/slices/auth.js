@@ -62,8 +62,8 @@ export function LoginUser(formValues) {
                 dispatch(
                     slice.actions.logIn({
                         isLoggedIn: true,
-                        token: response.data.token, 
-                     })
+                        token: response.data.token,
+                    })
                 );
 
                 window.localStorage.setItem("user_id", response.data.user_id);
@@ -75,7 +75,7 @@ export function LoginUser(formValues) {
 
             .catch(function (error) {
                 console.log(error);
-                
+
                 dispatch(showSnackbar({ severity: "error", message: error.message }));
             });
     }
@@ -86,8 +86,8 @@ export function LogoutUser() {
     return async (dispatch, getState) => {
         window.localStorage.removeItem("user_id");
         dispatch(slice.actions.signOut());
-       
-    }   
+
+    }
 }
 
 export function ForgotPassword(formValues) {

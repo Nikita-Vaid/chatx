@@ -10,7 +10,7 @@ import AntSwitch from "../../components/AntSwitch";
 import { faker } from "@faker-js/faker";
 import Logo from "../../assets/Images/logo.ico";
 import { useNavigate } from "react-router-dom";
-import { LoginUser, LogoutUser } from "../../redux/slices/auth";
+import {  LogoutUser } from "../../redux/slices/auth";
 import { useDispatch } from "react-redux";
 
 const getPath = (index) => {
