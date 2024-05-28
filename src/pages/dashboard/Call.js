@@ -20,7 +20,7 @@ import { useTheme } from "@mui/material/styles";
 import { SimpleBarStyle } from "../../components/Scrollbar";
 import { CallLogElement } from "../../components/CallElement";
 import { CallLogs } from "../../data";
-import StartCall from "../../sections/main/StartCall";
+import StartCall from "../../sections/Dashboard/StartCall";
 
 const Call = () => {
 

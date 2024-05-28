@@ -3,7 +3,7 @@ import { Stack, Avatar, Box, IconButton, Typography, Divider } from '@mui/materi
 import { useTheme } from '@mui/material/styles';
 import {CaretLeft, Bell , Image, Info, Key, Keyboard, Lock, Note, PencilCircle} from "phosphor-react";
 import {faker} from "@faker-js/faker";
-import Shortcuts from '../../sections/settings/Shortcut';
+import Shortcuts from '../../sections/Dashboard/settings/Shortcut';
 
 const Settings = () => {
     const theme = useTheme();
