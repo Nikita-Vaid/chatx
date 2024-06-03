@@ -1,19 +1,14 @@
-import axios from 'axios';  // Import axios from the axios library
-
-// Import your configuration
+import axios from 'axios';
+// config
 import { BASE_URL } from '../config';
 
-// Create an axios instance with the base URL
-const axiosInstance = axios.create({baseURL: BASE_URL});
+// ----------------------------------------------------------------------
 
-// Set up an interceptor to handle responses
+const axiosInstance = axios.create({ baseURL: BASE_URL });
+
 axiosInstance.interceptors.response.use(
   (response) => response,
-  (error) => {
-    const errorMessage = (error.response && error.response.data) || 'Something went wrong';
-    return Promise.reject(errorMessage);
-  }
+  (error) => Promise.reject((error.response && error.response.data) || 'Something went wrong')
 );
 
-// Export the configured axios instance
 export default axiosInstance;

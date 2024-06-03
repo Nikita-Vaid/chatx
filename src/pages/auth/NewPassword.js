@@ -3,7 +3,6 @@ import { Link as RouterLink } from "react-router-dom";
 import React from "react";
 import { CaretLeft } from "phosphor-react";
 import NewPasswordForm from "../../sections/auth/NewPasswordForm";
-// import NewPasswordForm from "../../sections/auth/NewPasswordForm";
 
 const NewPassword = () => {
   return (
@@ -42,6 +41,3 @@ const NewPassword = () => {
 };
 
 export default NewPassword;
-
-
-//

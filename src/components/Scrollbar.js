@@ -1,4 +1,3 @@
-
 import PropTypes from 'prop-types';
 import SimpleBarReact from 'simplebar-react';
 // @mui

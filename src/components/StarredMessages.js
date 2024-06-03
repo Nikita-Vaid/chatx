@@ -2,7 +2,7 @@ import React from "react";
 import { Box, Stack, Typography, IconButton } from '@mui/material';
 import { CaretLeft } from 'phosphor-react';
 import { useTheme } from "@mui/material/styles";
-import { useDispatch } from "../redux/store";
+import { useDispatch } from "react-redux";
 import { UpdateSidebarType } from "../redux/slices/app";
 import Message from "./Conversation/Message";
 

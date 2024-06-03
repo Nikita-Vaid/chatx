@@ -1,13 +1,15 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+// form
 import { useFormContext, Controller } from 'react-hook-form';
+// @mui
 import { Autocomplete, TextField } from '@mui/material';
 
+// ----------------------------------------------------------------------
+
 RHFAutocomplete.propTypes = {
-  name: PropTypes.string.isRequired,
-  label: PropTypes.string.isRequired,
+  name: PropTypes.string,
+  label: PropTypes.string,
   helperText: PropTypes.node,
-  // Add other PropTypes as needed
 };
 
 export default function RHFAutocomplete({ name, label, helperText, ...other }) {

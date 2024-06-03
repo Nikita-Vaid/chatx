@@ -240,7 +240,7 @@ const Footer = () => {
           </Stack>
           <Box
             sx={{
-              height: 48 ,
+              height: 48,
               width: 48,
               backgroundColor: theme.palette.primary.main,
               borderRadius: 1.5,
@@ -272,3 +272,4 @@ const Footer = () => {
   );
 };
 
+export default Footer;
