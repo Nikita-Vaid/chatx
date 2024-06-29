@@ -143,7 +143,7 @@ io.on("connection", (socket) => {
 
 app.use(errorMiddleware);
 
-server.listen(port, () => {
+server.listen(3000, () => {
   console.log(`Server is running on port ${port} in ${envMode} Mode`);
 });
 
