@@ -9,7 +9,7 @@ import {
   Typography,
 } from "@mui/material";
 import React, { Suspense, lazy, useState } from "react";
-import { orange } from "../../constants/color";
+import { blue } from "@mui/material/colors"; // Import the blue color from MUI
 import {
   Add as AddIcon,
   Menu as MenuIcon,
@@ -78,7 +78,7 @@ const Header = () => {
         <AppBar
           position="static"
           sx={{
-            bgcolor: orange,
+            bgcolor: blue[500], // Change the navbar color to blue
           }}
         >
           <Toolbar>
@@ -88,7 +88,7 @@ const Header = () => {
                 display: { xs: "none", sm: "block" },
               }}
             >
-              Chattu
+              TAWKS
             </Typography>
 
             <Box
